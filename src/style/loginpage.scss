@@ -1,0 +1,100 @@
+#login-page{
+    display: flex;
+    align-items: stretch;
+    height: 100vh;
+
+    aside{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        gap: 50px;
+       
+        >div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap:15px;
+
+            >p {
+                font-family: 'Lato',sans-serif;
+                font-size: 26px;
+            }
+
+        }
+    }
+
+    .container-login{
+        background:#262626;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:25px;
+        width: 100%;
+
+        button{
+            border: 0;
+            border-radius: 10px;
+            width: 300px;
+            height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            color : #fff;
+            cursor: pointer;
+            background: #FF7D01;
+        }
+        
+        .separator{
+            display: flex;
+            align-items: center;
+    
+            &::before{
+                content: '';
+                flex: 1;
+                width: 230px;
+                height: 1px;
+                background: #FF7D01;
+                margin-right: 16px;
+            }
+            &::after {
+                content: '';
+                flex: 1;
+                height: 1px;
+                background: #FF7D01;
+                margin-left: 16px;
+            }
+            p{
+                color: #fff;
+                font-size: 18px;
+                font-weight: bold;
+            } 
+        }
+
+        .input-login{
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+            span{
+                font-size: 16px;
+                font-weight: bold;
+                color : #fff;
+            }
+            input{
+                border: 0;
+                border-radius: 10px;
+                width: 300px;
+                height: 50px;
+                font-size: 16px;
+            }
+        }
+                
+        span{
+            font-size: 16px;
+            color: #fff;
+        }
+    }
+}
