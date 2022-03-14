@@ -1,45 +1,41 @@
 .base-clock {
-    --rotation:0;
     width: 300px;
     height: 300px;
     border-radius: 50%;
     position: relative;
-    background-image: linear-gradient(#A46FDE, #262626);
+    /* background-image: linear-gradient(#A46FDE, #262626); */
+    background: #262626;
     box-shadow: 1px 1px 15px #FF7D01;
-    transform: rotate(var(--rotation));
 
 
 }
 
 .base-clock .base-pointer{
-    --rotation:0;
     width: 300px;
     position: absolute;
     top: 50%;
     height: 2px;
-    margin-top: -1px;
-    transition: transform 1s;
-    -webkit-transition: transform 1s;
-    transform: rotate(calc(var(--rotation) * 1deg));
-    
+    margin-top: -1px;    
 }
 
 .base-clock .second > div {
     background-color: #FFF;
     height: 6px;
     width: 120px;
-    margin-left: 20px;
-    margin-top: -3px;
+    transform: rotate(89deg);
+    margin-left: 90px;
+    margin-top: -60px;
     border-radius: 6px;
-    box-shadow: 1px 1px 15px #333 ;
+    box-shadow: 1px 1px 15px #333;
 }
 
 .base-clock .minute > div {
     background-color: #fda8fd;
     height: 12px;
     width: 100px;
-    margin-left: 40px;
-    margin-top: -6px;
+    transform: rotate(89deg);
+    margin-left: 100px;
+    margin-top: -60px;
     border-radius: 6px;
     box-shadow: 1px 1px 15px #333 ;
 }
@@ -47,8 +43,9 @@
     background-color: #b9e877;
     height: 16px;
     width: 80px;
-    margin-left: 60px;
-    margin-top: -8px;
+    transform: rotate(89deg);
+    margin-left: 110px;
+    margin-top: -60px;
     border-radius: 6px;
     box-shadow: 1px 1px 15px #333 ;
 }
@@ -63,5 +60,6 @@
     margin-top: -25px;
     margin-left: -25px;
     border-radius: 50%;
-    box-shadow: 1px 1px 20px #333;
+    box-shadow: 2px 2px 40px #333;
 }
+

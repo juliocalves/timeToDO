@@ -1,6 +1,6 @@
 import '../style/loginpage.scss'
 import '../style/global.scss'
-import { Clock } from '../components/Clock'
+import { Clock } from '../components/Clock/Clock'
 
 export function LoginPage(){
     return(
