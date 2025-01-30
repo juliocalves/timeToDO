@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../services/firebase";
 import { FaGoogle, FaUser, FaLock } from "react-icons/fa";
 import { Clock } from "../components/Clock/Clock";
@@ -7,25 +7,27 @@ import { useNavigate } from "react-router-dom";
 import "../style/loginpage.scss";
 import "../style/global.scss";
 
-export function LoginPage() {
+export function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Hook para navegação
-  const handleGoogleLogin = async () => {
+  // Cadastro com Google
+  const handleGoogleSignup = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
       navigate("/");
     } catch (err) {
-      setError("Failed to login with Google.");
+      setError("Failed to sign up with Google.");
     }
   };
 
-  const handleEmailLogin = async () => {
+  // Cadastro com Email/Senha
+  const handleEmailSignup = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (err) {
-      setError("Invalid email or password.");
+      setError("Failed to create an account. Check your details.");
     }
   };
 
@@ -44,8 +46,8 @@ export function LoginPage() {
       <div className="container-login">
         {error && <p className="error">{error}</p>}
 
-        <button className="google-btn" onClick={handleGoogleLogin}>
-          <FaGoogle /> Login with Google
+        <button className="google-btn" onClick={handleGoogleSignup}>
+          <FaGoogle /> Sign Up with Google
         </button>
 
         <div className="separator">
@@ -72,16 +74,30 @@ export function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder="Create a password"
           />
         </div>
-
-        <button className="login-btn" onClick={handleEmailLogin}>
-          Login
+        <div className="input-login">
+          <span>
+            <FaLock /> Confirm Password
+          </span>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Confirm your password"
+          />
+        </div>
+        <button className="register-btn" onClick={handleEmailSignup}>
+          Create Account
         </button>
-            <span>
-            Don't have an account? <strong><a style={{color: "white"}} href="/register">Create now </a></strong>
-            </span>
+
+        <span>
+          Already have an account?{" "}
+          <strong>
+            <a style={{ color: "white" }} href="/login">Login</a>
+          </strong>
+        </span>
       </div>
     </div>
   );

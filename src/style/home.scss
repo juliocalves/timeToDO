@@ -1,33 +1,192 @@
-#home-page{
+#home-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #fff;
+    background: #29292e;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    gap:25px;
-    .content{
+  
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #29292e;
+      border-bottom: 2px solid #444;
+  
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #FF7D01;
+      }
+  
+      .tasks {
+        font-size: 1.2rem;
+      }
+  
+      .user-info {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        
-        
-        .pomodoro-content{
+        align-items: center;
+        gap: 10px;
+  
+        .greeting {
+          font-size: 1rem;
+        }
+  
+        .user-photo {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid #FF7D01;
+        }
+      }
+    }
+  
+    .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      .pomodoro-content {
+        background: #33334d;
+        padding: 20px;
+        border-radius: 10px;
+        width: 50%;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  
+        .timer {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px;
+  
+          .counter {
+            font-size: 3rem;
+            margin-bottom: 10px;
+          }
+  
+          button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background: #ffcc00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+  
+            &:hover {
+              background: #e6b800;
+            }
+          }
+        }
+  
+        .task-list {
+          .input-task {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap:10px;
-    
-            .timer{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 300px;
-                height: 300px;
-                border-radius: 15px;
-                gap:25px;
-                
-                background: #262626;
-                color: #fff;
+            margin-top: 15px;
+  
+            span {
+              font-size: 1rem;
+              margin-bottom: 5px;
             }
+  
+            input {
+              padding: 10px;
+              font-size: 1rem;
+              border-radius: 5px;
+              border: none;
+              width: 80%;
+            }
+          }
         }
+      }
     }
-
-}
+  }
+  .pomodoro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background-color: #222;
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .timer-modes {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .timer-modes button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .timer-modes .active {
+    border-bottom: 2px solid #FF7D01;
+  }
+  
+  .timer-display {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .start-stop-btn {
+    background-color: #FF7D01;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .start-stop-btn:hover {
+    background-color: dark#FF7D01;
+  }
+  
+  .reset-btn {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  .reset-btn:hover {
+    background-color: darkgray;
+  }
+  
+  .custom-timer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .custom-timer input {
+    width: 50px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.2rem;
+  }
+  
+  

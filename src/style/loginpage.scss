@@ -26,7 +26,12 @@
 
         }
     }
-
+    .google-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+    }
     .container-login{
         background:#262626;
         display: flex;
@@ -88,7 +93,8 @@
                 border-radius: 10px;
                 width: 300px;
                 height: 50px;
-                font-size: 16px;
+                font-size: 16px;  
+                padding: 1em;
             }
         }
                 

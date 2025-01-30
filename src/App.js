@@ -1,14 +1,24 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {LoginPage} from './pages/Login.js';
-import {HomePage} from './pages/Home.js';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { LoginPage } from "./pages/Login";
+import { HomePage } from "./pages/Home";
+import { RegisterPage } from "./pages/Register";
+import { AuthProvider } from "./context/AuthContext";
+import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<LoginPage/>}/>
-        <Route path='/home' element={<HomePage/>}/>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+
+          {/* Rota protegida */}
+          <Route element={<PrivateRoute />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

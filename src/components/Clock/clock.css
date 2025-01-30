@@ -1,65 +1,83 @@
-.base-clock {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .base-clock {
     position: relative;
-    /* background-image: linear-gradient(#A46FDE, #262626); */
-    background: #262626;
-    box-shadow: 1px 1px 15px #FF7D01;
-
-
-}
-
-.base-clock .base-pointer{
-    width: 300px;
+    width: 200px;
+    height: 200px;
+    background: black;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+  }
+  
+  .base-pointer {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
+  }
+  
+  .hour {
+    width: 6px;
+    height: 50px;
+    background: white;
+  }
+  
+  .minute {
+    width: 4px;
+    height: 70px;
+    background: lightgray;
+  }
+  
+  .second {
+    width: 2px;
+    height: 90px;
+    background: red;
+  }
+  
+  .decorator {
+    width: 12px;
+    height: 12px;
+    background: orange;
+    border-radius: 50%;
     position: absolute;
     top: 50%;
-    height: 2px;
-    margin-top: -1px;    
-}
-
-.base-clock .second > div {
-    background-color: #FFF;
-    height: 6px;
-    width: 120px;
-    transform: rotate(89deg);
-    margin-left: 90px;
-    margin-top: -60px;
-    border-radius: 6px;
-    box-shadow: 1px 1px 15px #333;
-}
-
-.base-clock .minute > div {
-    background-color: #fda8fd;
-    height: 12px;
-    width: 100px;
-    transform: rotate(89deg);
-    margin-left: 100px;
-    margin-top: -60px;
-    border-radius: 6px;
-    box-shadow: 1px 1px 15px #333 ;
-}
-.base-clock .hour > div {
-    background-color: #b9e877;
-    height: 16px;
-    width: 80px;
-    transform: rotate(89deg);
-    margin-left: 110px;
-    margin-top: -60px;
-    border-radius: 6px;
-    box-shadow: 1px 1px 15px #333 ;
-}
-
-.base-clock .decorator{
-    position:absolute;
-    width: 50px;
-    height: 50px;
-    background: #FF7D01;
-    top:50%;
     left: 50%;
-    margin-top: -25px;
-    margin-left: -25px;
-    border-radius: 50%;
-    box-shadow: 2px 2px 40px #333;
-}
-
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Números Romanos */
+  .roman-numbers span {
+    position: absolute;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Tooltip */
+  #clock-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  #clock-container:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
