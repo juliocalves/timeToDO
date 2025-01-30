@@ -72,9 +72,9 @@ O **timeToDO** é um projeto desenvolvido com **React** para ajudar na organiza�
 
 - Login 
 ![[Pasted image 20250129215309.png]]
-Login com google
+ - Login com google
 ![[Pasted image 20250129215415.png]]
-Home
+- Home
 ![[Pasted image 20250129215457.png]]
 
 ## 📚 Recursos e Documentação
