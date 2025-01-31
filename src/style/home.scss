@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
 
+  /* 📌 Estilo do Header */
   header {
     background: var(--dark);
     color: var(--light);
@@ -15,6 +16,7 @@
     align-items: center;
     padding: 1rem 2rem;
     border-bottom: 2px solid var(--primary);
+    flex-wrap: wrap; /* Permite quebra de linha quando necessário */
 
     .logo {
       font-size: 1.5rem;
@@ -41,14 +43,53 @@
     }
   }
 
+  /* 📌 Estilização do conteúdo principal */
   .content {
-      /* flex: 1 1; */
-      display: flex;
-      flex-direction: row;
-      /* align-items: flex-start; */
-      padding: 2rem;
-      gap: 5em;
-      align-content: center;
-      justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+    gap: 5em;
+    align-content: center;
+    justify-content: space-around;
+  }
+
+  /* 📌 Melhorias para responsividade */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .user-info {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .content {
+      flex-direction: column; /* Muda de row para column */
+      gap: 2rem;
+      padding: 1rem;
     }
   }
+
+  @media (max-width: 480px) {
+    header {
+      padding: 0.5rem;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+    }
+
+    .user-photo {
+      width: 35px;
+      height: 35px;
+    }
+
+    .content {
+      padding: 0.5rem;
+      gap: 1.5rem;
+    }
+  }
+}

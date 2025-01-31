@@ -1,0 +1,25 @@
+{
+	"nodes":[
+		{"id":"4dadb88a398361e8","type":"text","text":"App","x":-300,"y":-160,"width":250,"height":60},
+		{"id":"fda12649bcfca5be","type":"text","text":"Tem conta?","x":-300,"y":-32,"width":250,"height":60},
+		{"id":"849f501a1c2a2b46","type":"text","text":"Login","x":40,"y":-32,"width":250,"height":60},
+		{"id":"23880efb5bcbefd3","type":"text","text":"Register","x":-300,"y":100,"width":250,"height":60},
+		{"id":"45b408376a5ce72d","type":"text","text":"🔥 FireBase","x":480,"y":-22,"width":250,"height":50},
+		{"id":"081f31e8130add0f","type":"text","text":"Registrado?","x":-85,"y":340,"width":250,"height":60},
+		{"id":"10818ddf5f814ddd","type":"text","text":"Home","x":230,"y":460,"width":250,"height":60},
+		{"id":"2525486284ee3e85","type":"text","text":"Autenticado?","x":480,"y":340,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"a5705087b338aa32","fromNode":"4dadb88a398361e8","fromSide":"bottom","toNode":"fda12649bcfca5be","toSide":"top"},
+		{"id":"020e0ef72d11bfbc","fromNode":"fda12649bcfca5be","fromSide":"right","toNode":"849f501a1c2a2b46","toSide":"left","label":"Sim"},
+		{"id":"cf7c665f37bc266d","fromNode":"fda12649bcfca5be","fromSide":"bottom","toNode":"23880efb5bcbefd3","toSide":"top","label":"Não"},
+		{"id":"91799452d1b31ffa","fromNode":"849f501a1c2a2b46","fromSide":"right","toNode":"45b408376a5ce72d","toSide":"left","label":"Autenticação "},
+		{"id":"b99167e25cf872a8","fromNode":"45b408376a5ce72d","fromSide":"bottom","toNode":"2525486284ee3e85","toSide":"top"},
+		{"id":"6180ce12bcf7f9e3","fromNode":"2525486284ee3e85","fromSide":"left","toNode":"849f501a1c2a2b46","toSide":"bottom","label":"Não"},
+		{"id":"72d9a22651a7df22","fromNode":"2525486284ee3e85","fromSide":"bottom","toNode":"10818ddf5f814ddd","toSide":"right","label":"Sim"},
+		{"id":"70b5770beb657938","fromNode":"23880efb5bcbefd3","fromSide":"right","toNode":"45b408376a5ce72d","toSide":"bottom","label":"Registra"},
+		{"id":"5ee35f9a38837894","fromNode":"45b408376a5ce72d","fromSide":"bottom","toNode":"081f31e8130add0f","toSide":"right"},
+		{"id":"1c0770bccf80b25f","fromNode":"081f31e8130add0f","fromSide":"left","toNode":"23880efb5bcbefd3","toSide":"bottom","label":"Não"},
+		{"id":"c7646968a1beefa9","fromNode":"081f31e8130add0f","fromSide":"bottom","toNode":"10818ddf5f814ddd","toSide":"left","label":"Sim"}
+	]
+}

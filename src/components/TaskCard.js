@@ -1,8 +1,26 @@
-import { FaTrash } from "react-icons/fa";
-import { FaSave } from "react-icons/fa";
-import "../components/TaskCard.scss"
+import { useState } from "react";
+import { FaTrash, FaSave } from "react-icons/fa";
+import "../components/TaskCard.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { db } from "../services/firebase"; // Importando a configuração do Firebase
+import { doc, updateDoc } from "firebase/firestore";
+
 export function TaskCard({ tasks, onDeleteTask, onCompleteTask, newTask, setNewTask, handleAddTask }) {
+  const [editingTaskId, setEditingTaskId] = useState(null);
+  const [editedText, setEditedText] = useState("");
+
+  const handleEditTask = (task) => {
+    setEditingTaskId(task.id);
+    setEditedText(task.text);
+  };
+
+  const handleSaveEdit = async (taskId) => {
+    if (editedText.trim() === "") return;
+    const taskRef = doc(db, "tasks", taskId);
+    await updateDoc(taskRef, { text: editedText });
+    setEditingTaskId(null);
+  };
+
   return (
     <div className="task-card-container">
       <div className="card-header">
@@ -15,7 +33,7 @@ export function TaskCard({ tasks, onDeleteTask, onCompleteTask, newTask, setNewT
               value={newTask}
               onChange={(e) => setNewTask(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleAddTask()}
-              />
+            />
             <button onClick={handleAddTask}>
               <FaSave />
             </button>
@@ -23,7 +41,7 @@ export function TaskCard({ tasks, onDeleteTask, onCompleteTask, newTask, setNewT
         </div>
       </div>
       <hr />
-      <div className="body-card"> 
+      <div className="body-card">
         {tasks.length === 0 ? (
           <p className="no-tasks">Nenhuma tarefa adicionada.</p>
         ) : (
@@ -39,13 +57,25 @@ export function TaskCard({ tasks, onDeleteTask, onCompleteTask, newTask, setNewT
                     aria-label="Checkbox for following text input"
                   />
                 </div>
-                <input
-                  type="text"
-                  className={`form-control ${task.completed ? "completed" : ""}`}
-                  aria-label="Text input with checkbox"
-                  value={task.text}
-                  readOnly
-                />
+                {editingTaskId === task.id ? (
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={editedText}
+                    onChange={(e) => setEditedText(e.target.value)}
+                    onBlur={() => handleSaveEdit(task.id)}
+                    onKeyPress={(e) => e.key === "Enter" && handleSaveEdit(task.id)}
+                    autoFocus
+                  />
+                ) : (
+                  <input
+                    type="text"
+                    className={`form-control ${task.completed ? "completed" : ""}`}
+                    value={task.text}
+                    readOnly
+                    onClick={() => handleEditTask(task)}
+                  />
+                )}
                 <span className="input-group-text">
                   <button
                     className="delete-btn"
@@ -60,6 +90,5 @@ export function TaskCard({ tasks, onDeleteTask, onCompleteTask, newTask, setNewT
         )}
       </div>
     </div>
-
   );
 }

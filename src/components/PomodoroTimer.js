@@ -1,42 +1,41 @@
 import { useState, useEffect } from "react";
-import "./PomodoroTimer.scss"; // Importar o arquivo de estilo
+import { FaPlay, FaPause, FaUndo } from "react-icons/fa";
+import "./PomodoroTimer.scss";
 
 export function PomodoroTimer() {
-  const [time, setTime] = useState(25 * 60);
+  const [time, setTime] = useState(25 * 60); // Tempo em segundos
   const [isRunning, setIsRunning] = useState(false);
   const [mode, setMode] = useState("focus");
   const [customTime, setCustomTime] = useState(25); // Tempo personalizado em minutos
+  const [isEditing, setIsEditing] = useState(false);
 
-  // Configurações de tempo
   const timeSettings = {
     focus: 25 * 60,
     shortBreak: 5 * 60,
     longBreak: 15 * 60,
   };
 
-  // Função para alternar entre os modos
   const changeMode = (newMode) => {
     setMode(newMode);
     setTime(timeSettings[newMode]);
     setIsRunning(false);
+    setIsEditing(false);
   };
 
-  // Configuração personalizada
-  const setCustomTimer = () => {
+  // Aplica o tempo automaticamente
+  const applyCustomTime = () => {
     if (customTime > 0) {
       setTime(customTime * 60);
-      setMode("custom");
-      setIsRunning(false);
+      setIsEditing(false);
     }
   };
 
-  // Resetar o timer
   const resetTimer = () => {
     setTime(timeSettings[mode] || customTime * 60);
     setIsRunning(false);
+    setIsEditing(false);
   };
 
-  // Efeito para decrementar o tempo quando o timer está rodando
   useEffect(() => {
     if (!isRunning) return;
 
@@ -54,7 +53,6 @@ export function PomodoroTimer() {
     return () => clearInterval(interval);
   }, [isRunning]);
 
-  // Formata o tempo para MM:SS
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -65,28 +63,44 @@ export function PomodoroTimer() {
     <div className="pomodoro-container">
       <h2>Prepare-se para se concentrar</h2>
       <div className="timer-modes">
-        <button onClick={() => changeMode("focus")} className={mode === "focus" ? "active" : ""}>Foco</button>
-        <button onClick={() => changeMode("shortBreak")} className={mode === "shortBreak" ? "active" : ""}>Pausa Curta</button>
-        <button onClick={() => changeMode("longBreak")} className={mode === "longBreak" ? "active" : ""}>Pausa Longa</button>
+        <button onClick={() => changeMode("focus")} className={mode === "focus" ? "active" : ""}>
+          Foco
+        </button>
+        <button onClick={() => changeMode("shortBreak")} className={mode === "shortBreak" ? "active" : ""}>
+          Pausa Curta
+        </button>
+        <button onClick={() => changeMode("longBreak")} className={mode === "longBreak" ? "active" : ""}>
+          Pausa Longa
+        </button>
       </div>
 
-      <div className="timer-display">{formatTime(time)}</div>
+      <div className="timer-display">
+        {isEditing ? (
+          <input
+            className="custom-time-input"
+            type="number"
+            value={customTime}
+            onChange={(e) => setCustomTime(Number(e.target.value))}
+            onBlur={applyCustomTime} // Aplica ao clicar fora
+            onKeyDown={(e) => e.key === "Enter" && applyCustomTime()} // Aplica ao pressionar Enter
+            min="1"
+            placeholder="Minutos"
+            autoFocus
+          />
+        ) : (
+          <span onDoubleClick={() => !isRunning && setIsEditing(true)}>
+            {formatTime(time)}
+          </span>
+        )}
+      </div>
 
       <div className="controls">
         <button className="start-stop-btn" onClick={() => setIsRunning(!isRunning)}>
-          {isRunning ? "PAUSAR" : "INICIAR"}
+          {isRunning ? <FaPause /> : <FaPlay />}
         </button>
-        <button className="reset-btn" onClick={resetTimer}>RESETAR</button>
-      </div>
-
-      <div className="custom-timer">
-        <input
-          type="number"
-          value={customTime}
-          onChange={(e) => setCustomTime(Number(e.target.value))}
-          min="1"
-        />
-        <button onClick={setCustomTimer}>Definir Tempo Personalizado</button>
+        <button className="reset-btn" onClick={resetTimer}>
+          <FaUndo />
+        </button>
       </div>
     </div>
   );

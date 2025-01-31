@@ -12,6 +12,7 @@ export function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Hook para navegação
+
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
@@ -24,6 +25,7 @@ export function LoginPage() {
   const handleEmailLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
     } catch (err) {
       setError("Invalid email or password.");
     }
@@ -32,7 +34,7 @@ export function LoginPage() {
   return (
     <div id="login-page">
       <aside>
-        <Clock />
+        <Clock /> {/* Componente Clock corrigido */}
         <div>
           <p>Organize your routine,</p>
           <p>
@@ -79,9 +81,14 @@ export function LoginPage() {
         <button className="login-btn" onClick={handleEmailLogin}>
           Login
         </button>
-            <span>
-            Don't have an account? <strong><a style={{color: "white"}} href="/register">Create now </a></strong>
-            </span>
+        <span>
+          Don't have an account?{" "}
+          <strong>
+            <a style={{ color: "white" }} href="/register">
+              Create now
+            </a>
+          </strong>
+        </span>
       </div>
     </div>
   );
