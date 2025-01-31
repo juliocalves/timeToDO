@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./clock.css";
+import "./clock.scss";
 
 export function Clock() {
   const hourRef = useRef();

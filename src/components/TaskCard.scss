@@ -1,0 +1,191 @@
+.task-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--text);
+    max-height: 400px;
+    .input-task {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+  
+      input {
+        flex: 1;
+        padding: 0.5rem;
+        border: 1px solid var(--secondary);
+        border-radius: 5px;
+        background-color: var(--card-background);
+        color: var(--text);
+      }
+  
+      button {
+        background-color: var(--primary);
+        color: var(--light);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+  
+        &:hover {
+          background-color: var(--warning);
+        }
+      }
+    }
+    hr {
+      width: 100%;
+      height: 1px;
+      background-color: var(--secondary);
+    }
+    .no-tasks {
+      text-align: center;
+      color: var(--secondary);
+    }
+  
+    .task-card {
+      margin-bottom: 1rem;
+  
+      .input-group {
+        .form-control {
+          background-color: var(--card-background);
+          color: var(--text);
+          border: 1px solid var(--secondary);
+  
+          &.completed {
+            text-decoration: line-through;
+            color: var(--secondary);
+          }
+        }
+  
+        .input-group-text {
+          background-color: var(--card-background);
+          border: 1px solid var(--secondary);
+  
+          .delete-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            transition: 0.3s;
+  
+            &:hover {
+              color: var(--warning);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .task-card-container {
+  background: var(--card-background);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  width: 100%; // Igualar a largura ao PomodoroTimer
+  max-width: 600px; // Ajuste conforme necessário
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .body-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto; // Habilitar barra de rolagem vertical
+    padding-right: 0.5rem; // Espaço para a barra de rolagem
+  }
+  .input-task {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid var(--secondary);
+      border-radius: 5px;
+      background-color: var(--card-background);
+      color: var(--text);
+    }
+
+    button {
+      background-color: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: var(--warning);
+      }
+    }
+  }
+
+  .no-tasks {
+    text-align: center;
+    color: var(--secondary);
+  }
+
+  .task-list {
+    display: flex;
+    flex-direction: row; // Exibir tarefas em linha
+    flex-wrap: wrap; // Permitir que as tarefas quebrem para a próxima linha
+    gap: 1rem; // Espaçamento entre as tarefas
+
+    .task-card {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 5px;
+      border: 1px solid var(--secondary);
+      flex: 1 1 calc(33.333% - 1rem); // Ajustar o tamanho das tarefas
+      box-sizing: border-box;
+
+      .input-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .form-control {
+          background-color: var(--card-background);
+          color: var(--text);
+          border: 1px solid var(--secondary);
+
+          &.completed {
+            text-decoration: line-through;
+            color: var(--secondary);
+          }
+        }
+
+        .input-group-text {
+          background-color: var(--card-background);
+          border: 1px solid var(--secondary);
+
+          .delete-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+              color: var(--warning);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.markdown-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 1.6;
+  
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+  
+    p {
+      margin-bottom: 1rem;
+    }
+  
+    a {
+      color: var(--primary);
+      text-decoration: none;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  
+    ul, ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+  
+    code {
+      background-color: var(--light);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-family: "Courier New", monospace;
+    }
+  
+    pre {
+      background-color: var(--light);
+      padding: 1rem;
+      border-radius: 4px;
+      overflow-x: auto;
+  
+      code {
+        background-color: transparent;
+        padding: 0;
+      }
+    }
+  
+    blockquote {
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+      margin: 1rem 0;
+      color: var(--secondary);
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+  
+      th, td {
+        padding: 0.5rem;
+        border: 1px solid var(--secondary);
+      }
+  
+      th {
+        background-color: var(--primary);
+        color: var(--light);
+      }
+    }
+  }

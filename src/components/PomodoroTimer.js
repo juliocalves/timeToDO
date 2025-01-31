@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./PomodoroTimer.scss"; // Importar o arquivo de estilo
 
 export function PomodoroTimer() {
   const [time, setTime] = useState(25 * 60);
@@ -62,6 +63,7 @@ export function PomodoroTimer() {
 
   return (
     <div className="pomodoro-container">
+      <h2>Prepare-se para se concentrar</h2>
       <div className="timer-modes">
         <button onClick={() => changeMode("focus")} className={mode === "focus" ? "active" : ""}>Foco</button>
         <button onClick={() => changeMode("shortBreak")} className={mode === "shortBreak" ? "active" : ""}>Pausa Curta</button>
