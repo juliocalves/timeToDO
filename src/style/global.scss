@@ -19,7 +19,7 @@ body {
   padding: 0;
 }
 
-header {
+.header {
   background: var(--dark);
   color: var(--light);
   display: flex;
@@ -27,22 +27,40 @@ header {
   align-items: center;
   padding: 1rem 2rem;
   border-bottom: 2px solid var(--primary);
+  position: relative;
 }
 
-.theme-toggle {
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.menu-toggle {
+  display: none;
   background: transparent;
   color: var(--light);
   border: none;
-  padding: 0.5rem 1rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-
-  &:hover {
-    background: var(--primary);
-  }
 }
 
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.theme-toggle,
 .logout-btn {
   background: transparent;
   color: var(--light);
@@ -51,21 +69,39 @@ header {
   cursor: pointer;
   border-radius: 5px;
   transition: 0.3s;
-
-  &:hover {
-    background: var(--primary);
-  }
 }
 
-
-.toast {
+.theme-toggle:hover,
+.logout-btn:hover {
   background: var(--primary);
-  color: var(--light);
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: 1rem;
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  z-index: 1000;
+}
+
+/* 📱 Estilos para telas menores */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: var(--dark);
+    flex-direction: row;  /* Menu horizontal */
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .user-photo {
+    width: 35px;
+    height: 35px;
+  }
 }

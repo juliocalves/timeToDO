@@ -1,20 +1,25 @@
 .pomodoro-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    background-color: var(--card-background);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: var(--text);
-  }
-  
-  .timer-modes {
-    display: flex;
-    gap: 1rem;
-  
-    button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--card-background);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  width: 90%;
+  max-width: 400px; /* Limita a largura máxima */
+  margin: auto;
+}
+
+.timer-modes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+  justify-content: center;
+
+  button {
       background: none;
       border: none;
       color: var(--text);
@@ -22,70 +27,124 @@
       padding: 0.5rem 1rem;
       cursor: pointer;
       transition: 0.3s;
-  
+
       &:hover {
-        color: var(--primary);
+          color: var(--primary);
       }
-  
+
       &.active {
-        border-bottom: 2px solid var(--primary);
+          border-bottom: 2px solid var(--primary);
       }
-    }
   }
-  
-  .timer-display {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--primary);
-  }
-  
-  .controls {
-    display: flex;
-    gap: 1rem;
-  
-    .start-stop-btn {
-      background-color: var(--primary);
-      color: var(--light);
-      border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-  
-      &:hover {
-        background-color: var(--warning);
-      }
-    }
-  
-    .reset-btn {
-      background-color: var(--secondary);
-      color: var(--light);
-      border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: 0.3s;
-  
-      &:hover {
-        background-color: var(--danger);
-      }
-    }
-  }
-  
-  .custom-time-input {
-    font-size: 3rem;  /* Mantém o tamanho grande */
-    font-weight: bold;
-    color: var(--primary); 
-    border: none; /* Remove bordas */
-    background: transparent; /* Remove fundo */
-    text-align: center; /* Alinha o número */
-    width: 2em; /* Permite ajuste para 2 dígitos */
-    outline: none; /* Remove contorno ao focar */
-    appearance: textfield; /* Remove setas padrão de inputs numéricos */
-    cursor: pointer;
-    padding: 0;
 }
 
+.timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-align: center;
+}
 
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* Garante que os botões não quebrem em telas menores */
+  justify-content: center;
+
+  button {
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+      width: 100%; /* Ocupa toda a largura em telas pequenas */
+      max-width: 150px; /* Mas limita para evitar exageros */
+  }
+
+  .start-stop-btn {
+      background-color: var(--primary);
+      color: var(--light);
+
+      &:hover {
+          background-color: var(--warning);
+      }
+  }
+
+  .reset-btn {
+      background-color: var(--secondary);
+      color: var(--light);
+
+      &:hover {
+          background-color: var(--danger);
+      }
+  }
+}
+
+.custom-time-input {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary);
+  border: none;
+  background: transparent;
+  text-align: center;
+  width: 2.5em;
+  outline: none;
+  appearance: textfield;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 📌 Ajustes para telas menores */
+@media (max-width: 768px) {
+  .pomodoro-container {
+      padding: 1.5rem;
+      width: 95%;
+  }
+
+  .timer-modes {
+      gap: 0.5rem;
+  }
+
+  .timer-display {
+      font-size: 2.5rem;
+  }
+
+  .custom-time-input {
+      font-size: 2.5rem;
+  }
+
+  .controls {
+      gap: 0.5rem;
+      
+      button {
+          font-size: 0.9rem;
+          padding: 0.6rem 1rem;
+      }
+  }
+}
+
+/* 📌 Ajustes para telas muito pequenas (celulares compactos) */
+@media (max-width: 480px) {
+  .pomodoro-container {
+      padding: 1rem;
+  }
+
+  .timer-display {
+      font-size: 2rem;
+  }
+
+  .custom-time-input {
+      font-size: 2rem;
+  }
+
+  .controls {
+      flex-direction: column;
+      align-items: center;
+
+      button {
+          width: 100%; /* Botões ocupam toda a largura */
+          max-width: none;
+      }
+  }
+}

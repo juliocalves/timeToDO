@@ -1,28 +1,33 @@
-// Header.js
-import { useState ,React} from "react";
+import { useState, React } from "react";
 import { CiAlarmOn } from "react-icons/ci";
+import { FaQuestion, FaBars } from "react-icons/fa6";
 import { LogoutButton } from "./LogoutButton";
-import { FaQuestion } from "react-icons/fa6";
-import { About } from "../components/About"; // Importa o modal
-export function Header({ user, theme, toggleTheme }) {
-    const [showModal, setShowModal] = useState(false);
+import { About } from "../components/About";
 
-    const toggleModal = () => setShowModal(!showModal);
+export function Header({ user, theme, toggleTheme }) {
+  const [showModal, setShowModal] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleModal = () => setShowModal(!showModal);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header>
+    <header className="header">
       <div className="logo">
-        <CiAlarmOn className="tomato-icon" />
+        <CiAlarmOn className="icon" />
       </div>
-      <div className="user-info">
-        {user && (
-          <>
-            <img src={user.photoURL} alt="User" className="user-photo" />
-          </>
-        )}
+
+      {/* Botão Sanduíche (Visível apenas em telas menores) */}
+      <button className="menu-toggle" onClick={toggleMenu}>
+        <FaBars />
+      </button>
+
+      {/* Menu Principal */}
+      <nav className={`nav-menu ${menuOpen ? "open" : ""}`}>
+        {user && <img src={user.photoURL} alt="User" className="user-photo" />}
 
         <button className="theme-toggle" onClick={toggleModal}>
-            <FaQuestion />
+          <FaQuestion />
         </button>
         <About show={showModal} onClose={toggleModal} />
 
@@ -31,7 +36,7 @@ export function Header({ user, theme, toggleTheme }) {
         </button>
 
         <LogoutButton />
-      </div>
+      </nav>
     </header>
   );
 }

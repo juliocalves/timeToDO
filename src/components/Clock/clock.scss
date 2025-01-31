@@ -1,83 +1,157 @@
 .clock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* 🕰️ Base do relógio */
+.base-clock {
+  position: relative;
+  width: 15vw;
+  height: 15vw;
+  max-width: 200px;
+  max-height: 200px;
+  min-width: 100px;
+  min-height: 100px;
+  background: black;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+}
+
+/* 🕒 Ponteiros */
+.base-pointer {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  transform: rotate(0deg);
+  transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
+}
+
+.hour {
+  width: 0.3vw;
+  height: 4vw;
+  max-width: 6px;
+  max-height: 50px;
+  background: white;
+}
+
+.minute {
+  width: 0.2vw;
+  height: 5.5vw;
+  max-width: 4px;
+  max-height: 70px;
+  background: lightgray;
+}
+
+.second {
+  width: 0.1vw;
+  height: 7vw;
+  max-width: 2px;
+  max-height: 90px;
+  background: red;
+}
+
+/* 🔸 Ponto central */
+.decorator {
+  width: 0.9vw;
+  height: 0.9vw;
+  max-width: 12px;
+  max-height: 12px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 🔢 Números Romanos */
+.roman-numbers span {
+  position: absolute;
+  font-size: 0.8vw;
+  font-weight: bold;
+  color: white;
+  transform: translate(-50%, -50%);
+}
+
+/* 🏷️ Tooltip */
+#clock-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#clock-container:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* 📌 Responsividade */
+@media (max-width: 768px) {
   .base-clock {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    background: black;
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+      width: 20vw;
+      height: 20vw;
   }
-  
-  .base-pointer {
-    position: absolute;
-    bottom: 50%;
-    left: 50%;
-    transform-origin: bottom;
-    transform: rotate(0deg);
-    transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.3, 1);
-  }
-  
+
   .hour {
-    width: 6px;
-    height: 50px;
-    background: white;
+      height: 5vw;
   }
-  
+
   .minute {
-    width: 4px;
-    height: 70px;
-    background: lightgray;
+      height: 6.5vw;
   }
-  
+
   .second {
-    width: 2px;
-    height: 90px;
-    background: red;
+      height: 8vw;
   }
-  
-  .decorator {
-    width: 12px;
-    height: 12px;
-    background: orange;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Números Romanos */
+
   .roman-numbers span {
-    position: absolute;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    transform: translate(-50%, -50%);
+      font-size: 1vw;
   }
-  
-  /* Tooltip */
+}
+
+@media (max-width: 480px) {
+  .base-clock {
+      width: 25vw;
+      height: 25vw;
+  }
+
+  .hour {
+      height: 6vw;
+  }
+
+  .minute {
+      height: 7.5vw;
+  }
+
+  .second {
+      height: 9vw;
+  }
+
+  .roman-numbers span {
+      font-size: 1.2vw;
+  }
+
   #clock-container {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
   }
-  
-  #clock-container:hover::after {
-    content: attr(title);
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
+
+  .container-login {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
-  
+}

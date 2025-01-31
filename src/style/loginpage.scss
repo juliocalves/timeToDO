@@ -1,106 +1,183 @@
-#login-page{
+#login-page {
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
+    flex-wrap: wrap;
+    padding: 1rem; // Adiciona espaçamento para telas menores
 
-    aside{
+    aside {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
+        width: 50%; // Mantém a largura equilibrada
         height: 100vh;
-        gap: 50px;
-       
-        >div{
+        gap: 2rem;
+        text-align: center;
+
+        > div {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap:15px;
+            gap: 1rem;
 
-            >p {
-                font-family: 'Lato',sans-serif;
-                font-size: 26px;
+            > p {
+                font-family: 'Lato', sans-serif;
+                font-size: 1.6rem;
             }
-
         }
     }
-    .google-btn{
+
+    .google-btn {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 1em;
+        width: 100%;
+        max-width: 300px;
     }
-    .container-login{
-        background:#262626;
+
+    .container-login {
+        background: #262626;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap:25px;
-        width: 100%;
+        gap: 1.5rem;
+        width: 50%;
+        max-width: 400px;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
 
-        button{
+        button {
             border: 0;
             border-radius: 10px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             height: 50px;
-            font-size: 16px;
+            font-size: 1rem;
             font-weight: bold;
-            color : #fff;
+            color: #fff;
             cursor: pointer;
             background: #FF7D01;
+            transition: 0.3s;
+
+            &:hover {
+                background: #e96c00;
+            }
         }
-        
-        .separator{
+
+        .separator {
             display: flex;
             align-items: center;
-    
-            &::before{
-                content: '';
-                flex: 1;
-                width: 230px;
-                height: 1px;
-                background: #FF7D01;
-                margin-right: 16px;
-            }
+            width: 100%;
+            max-width: 300px;
+
+            &::before,
             &::after {
                 content: '';
                 flex: 1;
                 height: 1px;
                 background: #FF7D01;
-                margin-left: 16px;
+                margin: 0 1rem;
             }
-            p{
+
+            p {
                 color: #fff;
-                font-size: 18px;
+                font-size: 1rem;
                 font-weight: bold;
-            } 
+            }
         }
 
-        .input-login{
+        .input-login {
             display: flex;
             flex-direction: column;
-            gap:5px;
-            span{
-                font-size: 16px;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+
+            span {
+                font-size: 1rem;
                 font-weight: bold;
-                color : #fff;
+                color: #fff;
             }
-            input{
+
+            input {
                 border: 0;
                 border-radius: 10px;
-                width: 300px;
+                width: 100%;
                 height: 50px;
-                font-size: 16px;  
+                font-size: 1rem;
                 padding: 1em;
             }
         }
-                
-        span{
-            font-size: 16px;
+
+        span {
+            font-size: 1rem;
             color: #fff;
         }
+    }
+}
+
+/* 📌 Responsividade */
+@media (max-width: 1024px) {
+    #login-page {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        gap: 2rem;
+    }
+
+    aside {
+        width: 80%;
+        height: auto;
+    }
+
+    .container-login {
+        width: 80%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    aside {
+        width: 100%;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .container-login {
+        width: 100%;
+        max-width: 300px;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #login-page {
+        padding: 0.5rem;
+    }
+
+    aside {
+        gap: 1rem;
+
+        > div p {
+            font-size: 1.2rem;
+        }
+    }
+
+    .container-login {
+        width: 100%;
+        max-width: 90%;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        height: 45px;
     }
 }
